@@ -157,12 +157,12 @@ for p1 in p1samples:
 
 '''Loss channel and amplitude damping channel'''
 
-p1samples=np.linspace(1/2,1/2,50)
+p1samples=np.linspace(pc,1/2,50)
 p2samples=np.linspace(1/2,1/2,1)
 xtop=0
 for p1 in p1samples:
     for p2 in p2samples:
-        K1,K2=SU.Lost_Kraus(lam=p1,where=1),SU.AmplitudeDamping_Kraus(lam=p2,where=2)
+        K1,K2=SU.Loss_Kraus(lam=p1,where=1),SU.AmplitudeDamping_Kraus(lam=p2,where=2)
         x,state=SU.ChannelsSeeSaw(1e-5,20,K1,K2,eps=1,pJump=1,iters=40,track=True)
         if x>xtop:xtop=x
   
